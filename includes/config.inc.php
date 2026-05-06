@@ -37,4 +37,19 @@ $oldalak = array(
 );
 
 $hiba_oldal = array ('fajl' => '404', 'szoveg' => 'A keresett oldal nem található!');
+
+
+try {
+    $dbh = new PDO(
+        'mysql:host=localhost;dbname=gyakorlat7',
+        'root',
+        '',
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+    );
+
+    $dbh->query('SET NAMES utf8');
+}
+catch (PDOException $e) {
+    die("Adatbázis hiba: " . $e->getMessage());
+}
 ?>
