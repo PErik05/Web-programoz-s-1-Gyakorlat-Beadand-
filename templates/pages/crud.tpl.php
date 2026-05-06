@@ -22,7 +22,6 @@
 
 <?php
 $stmt = $dbh->query("SELECT * FROM felhasznalok ORDER BY id DESC");
-if(isset($_SESSION['login'])){
 
 
 foreach ($stmt as $row) {
@@ -40,7 +39,7 @@ foreach ($stmt as $row) {
 
     echo "</tr>";
 }
-}
+
 ?>
 
 </table>
