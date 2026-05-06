@@ -1,5 +1,5 @@
 <?php
-global $dbh;
+require_once('./includes/config.inc.php');
 
 if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 
@@ -24,7 +24,7 @@ if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 <h2>Képgaléria</h2>
 
 <?php
-global $dbh;
+
 
 $sql = "SELECT * FROM kepek ORDER BY feltoltes_datuma DESC";
 $result = $dbh->query($sql);
