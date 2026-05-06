@@ -31,7 +31,7 @@ $result = $dbh->query($sql);
 
 echo '<div class="galeria">';
 
-while($row = $result->fetch_assoc()) {
+while($row = $result->fetch(PDO::FETCH_ASSOC)) {
     echo '<img src="images/upload/'.$row['fajlnev'].'" width="200">';
 }
 
