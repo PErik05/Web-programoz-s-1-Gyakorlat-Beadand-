@@ -1,8 +1,16 @@
 <?php
 
-/* =========================
-   ADD USER
-========================= */
+// DELETE
+if (isset($_GET['delete'])) {
+
+    $stmt = $dbh->prepare("DELETE FROM felhasznalok WHERE id = ?");
+    $stmt->execute([$_GET['delete']]);
+
+    header("Location: index.php?crud");
+    exit;
+}
+
+// ADD
 if (isset($_GET['crud_add']) && $_POST) {
 
     $stmt = $dbh->prepare("
@@ -18,19 +26,25 @@ if (isset($_GET['crud_add']) && $_POST) {
         $_POST['jelszo']
     ]);
 
-    header("Location: ?crud");
+    header("Location: index.php?crud");
     exit;
 }
+if (isset($_POST['edit_id'])) {
 
-/* =========================
-   DELETE
-========================= */
-if (isset($_GET['crud_delete'])) {
+    $stmt = $dbh->prepare("
+        UPDATE felhasznalok
+        SET csaladi_nev=?, uto_nev=?, bejelentkezes=?
+        WHERE id=?
+    ");
 
-    $stmt = $dbh->prepare("DELETE FROM felhasznalok WHERE id = ?");
-    $stmt->execute([$_GET['crud_delete']]);
+    $stmt->execute([
+        $_POST['csaladi_nev'],
+        $_POST['uto_nev'],
+        $_POST['bejelentkezes'],
+        $_POST['edit_id']
+    ]);
 
-    header("Location: ?crud");
+    header("Location: index.php?crud");
     exit;
 }
 

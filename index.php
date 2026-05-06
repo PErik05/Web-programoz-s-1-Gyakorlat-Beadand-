@@ -16,7 +16,8 @@
 
 include('./includes/config.inc.php');
 
-$oldal = $_SERVER['QUERY_STRING'];
+//$oldal = $_SERVER['QUERY_STRING'];
+$oldal = $_GET;
 
 // 🔥 ÜZENET KÜLDÉS KEZELÉS
 if ($oldal == "kapcsolat_kuld" && $_POST) {
