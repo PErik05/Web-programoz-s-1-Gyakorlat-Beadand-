@@ -1,10 +1,10 @@
 <?php
 
 // DELETE
-if (isset($_GET['delete'])) {
+if (isset($_GET['crud_delete'])) {
 
     $stmt = $dbh->prepare("DELETE FROM felhasznalok WHERE id = ?");
-    $stmt->execute([$_GET['delete']]);
+    $stmt->execute([$_GET['crud_delete']]);
 
     header("Location: index.php?crud");
     exit;
