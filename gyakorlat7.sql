@@ -30,7 +30,7 @@ INSERT INTO `felhasznalok` (`id`,`csaladi_nev`,`uto_nev`,`bejelentkezes`,`jelszo
 
 CREATE TABLE kepek (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    fajlnev VARCHAR(255),
+    fajlnev VARCHAR(255) NOT NULL,
     feltolto VARCHAR(100),
     feltoltes_datuma DATETIME
 );
