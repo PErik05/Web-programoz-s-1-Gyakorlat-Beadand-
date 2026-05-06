@@ -14,6 +14,7 @@ $lablec = array(
     'copyright' => 'Copyright '.date("Y").'.',
     'ceg' => 'Mini honlap Kft.'
 );
+
 $servername = "localhost";
 $username = "root";
 $password = "";

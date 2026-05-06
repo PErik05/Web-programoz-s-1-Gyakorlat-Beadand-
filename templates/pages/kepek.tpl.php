@@ -1,5 +1,5 @@
 <?php
-global $conn;
+global $dbh;
 
 if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 
@@ -12,7 +12,7 @@ if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
         $sql = "INSERT INTO kepek (fajlnev, feltolto, feltoltes_datuma)
                 VALUES ('$file_name', '".$_SESSION['login']."', NOW())";
 
-        $conn->query($sql);
+        $dbh->query($sql);
 
         echo "<p>Sikeres feltöltés!</p>";
     } else {
@@ -24,10 +24,10 @@ if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 <h2>Képgaléria</h2>
 
 <?php
-global $conn;
+global $dbh;
 
 $sql = "SELECT * FROM kepek ORDER BY feltoltes_datuma DESC";
-$result = $conn->query($sql);
+$result = $dbh->query($sql);
 
 echo '<div class="galeria">';
 

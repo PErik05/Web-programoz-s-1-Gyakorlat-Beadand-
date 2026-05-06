@@ -13,3 +13,4 @@
 	else $keres = $oldalak['/'];
 	include('./templates/index.tpl.php'); 
 ?>
+

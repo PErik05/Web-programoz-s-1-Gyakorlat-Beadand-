@@ -125,3 +125,18 @@ footer {
         height: auto;
     }
 }
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.galeria img {
+    width: 200px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.1);
+}
