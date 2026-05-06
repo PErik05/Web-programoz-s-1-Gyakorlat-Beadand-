@@ -26,7 +26,7 @@ if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 
 <?php
 /* include('./includes/config.inc.php'); */
-
+global $conn;
 $sql = "SELECT * FROM kepek ORDER BY feltoltes_datuma DESC";
 $result = $conn->query($sql);
 
