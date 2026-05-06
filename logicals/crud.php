@@ -1,37 +1,67 @@
-
 <?php
-if(isset($_GET['torol'])) {
-    try {
-        $dbh = new PDO('mysql:host=localhost;dbname=gyakorlat7', 'root', '',
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-        $sql = "DELETE FROM varos WHERE id = :id";
-        $sth = $dbh->prepare($sql);
-        $sth->execute(array(':id' => $_GET['torol']));
-    }
-    catch (PDOException $e) {
-        echo "Hiba: " . $e->getMessage();
-    }
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=gyakorlat7', 'root', '',
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $dbh->query('SET NAMES utf8');
 }
-?>
-<?php
+catch (PDOException $e) {
+    die("DB hiba: " . $e->getMessage());
+}
 
-if(isset($_POST['nev']) && isset($_POST['megyeid'])) {
-    try {
-        $dbh = new PDO('mysql:host=localhost;dbname=gyakorlat7', 'root', '',
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        
-        $sql = "INSERT INTO varos (nev, megyeid, megyeszekhely, megyeijogu)
-                VALUES (:nev, :megyeid, 0, 0)";
+/* =========================
+   CREATE (ADD USER)
+========================= */
+if (isset($_GET['crud_add']) && $_POST) {
 
-        $sth = $dbh->prepare($sql);
-        $sth->execute(array(
-            ':nev' => $_POST['nev'],
-            ':megyeid' => $_POST['megyeid']
-        ));
-    }
-    catch (PDOException $e) {
-        echo "Hiba: " . $e->getMessage();
-    }
+    $stmt = $dbh->prepare("
+        INSERT INTO users (name, email, mobile)
+        VALUES (:name, :email, :mobile)
+    ");
+
+    $stmt->execute([
+        ':name' => $_POST['name'],
+        ':email' => $_POST['email'],
+        ':mobile' => $_POST['mobile']
+    ]);
+
+    header("Location: ?crud");
+    exit;
+}
+
+/* =========================
+   DELETE
+========================= */
+if (isset($_GET['crud_delete'])) {
+
+    $stmt = $dbh->prepare("DELETE FROM users WHERE id = :id");
+    $stmt->execute([':id' => $_GET['crud_delete']]);
+
+    header("Location: ?crud");
+    exit;
+}
+
+/* =========================
+   UPDATE (EDIT SIMPLE VERSION)
+   -> gyors beadandó megoldás
+========================= */
+if (isset($_GET['crud_edit']) && $_POST) {
+
+    $stmt = $dbh->prepare("
+        UPDATE users
+        SET name = :name,
+            email = :email,
+            mobile = :mobile
+        WHERE id = :id
+    ");
+
+    $stmt->execute([
+        ':id' => $_GET['crud_edit'],
+        ':name' => $_POST['name'],
+        ':email' => $_POST['email'],
+        ':mobile' => $_POST['mobile']
+    ]);
+
+    header("Location: ?crud");
+    exit;
 }
 ?>
