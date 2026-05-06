@@ -1,13 +1,10 @@
 <h1 style="text-align:center;">CRUD OPERATIONS</h1>
 
-<h3>Add User</h3>
+
 
 <form method="post" action="?crud_add">
 
-    Családi név: <input type="text" name="csaladi_nev"><br><br>
-    Utónév: <input type="text" name="uto_nev"><br><br>
-    Bejelentkezés: <input type="text" name="bejelentkezes"><br><br>
-    Jelszó: <input type="password" name="jelszo"><br><br>
+    
 
     <button class="btn-blue" type="submit">Add User</button>
 </form>
