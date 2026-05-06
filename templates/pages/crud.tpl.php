@@ -23,7 +23,7 @@
 
 <?php
 // 🔥 EZ FONTOS: config.inc.php-ból jön $dbh
-$stmt = $dbh->query("SELECT * FROM users ORDER BY id DESC");
+$stmt = $dbh->query("SELECT * FROM felhasznalok ORDER BY id DESC");
 
 foreach ($stmt as $row) {
     echo "<tr>";
