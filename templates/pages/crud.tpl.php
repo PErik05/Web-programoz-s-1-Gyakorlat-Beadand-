@@ -35,8 +35,8 @@ foreach ($stmt as $row) {
     echo "<td>{$row['bejelentkezes']}</td>";
 
     echo "<td>
-            <a class="btn-blue" href="?crud&edit=<?=$row['id']?>">Edit</a>
-            <a class="btn-red" href="?crud&delete=<?=$row['id']?>">Delete</a>
+            <a class='btn-blue' href='?crud_edit={$row['id']}'>Edit</a>
+            <a class='btn-red' href='?crud_delete={$row['id']}'>Delete</a>
           </td>";
 
     echo "</tr>";
