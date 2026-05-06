@@ -14,7 +14,16 @@ $lablec = array(
     'copyright' => 'Copyright '.date("Y").'.',
     'ceg' => 'Mini honlap Kft.'
 );
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gyakorlat7";
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Adatbázis hiba: " . $conn->connect_error);
+}
 $oldalak = array(
     '/' => array('fajl' => 'cimlap', 'szoveg' => 'Főoldal', 'menun' => array(1,1)),
 
