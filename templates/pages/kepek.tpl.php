@@ -2,8 +2,8 @@
 <?php
 if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 
-    include('./includes/config.inc.php');
-
+/*     include('./includes/config.inc.php');
+ */
     $target_dir = "images/upload/";
     $file_name = basename($_FILES["kep"]["name"]);
     $target_file = $target_dir . $file_name;
@@ -25,7 +25,7 @@ if(isset($_POST['feltolt']) && isset($_SESSION['login'])) {
 <h2>Képgaléria</h2>
 
 <?php
-include('./includes/config.inc.php');
+/* include('./includes/config.inc.php'); */
 
 $sql = "SELECT * FROM kepek ORDER BY feltoltes_datuma DESC";
 $result = $conn->query($sql);
