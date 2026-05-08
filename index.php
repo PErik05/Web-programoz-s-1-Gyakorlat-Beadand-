@@ -1,9 +1,11 @@
 <?php
-	
-
 include('./includes/config.inc.php');
 
-$oldal = $_SERVER['QUERY_STRING'];
+// ÍGY JAVÍTSD AZ ÚTVONALVÁLASZTÓT:
+$queryString = $_SERVER['QUERY_STRING'];
+$params = explode('&', $_SERVER['QUERY_STRING']);
+$oldal = $params[0];
+// Ezzel a trükkel a "?crud&delete=1" URL-ből az $oldal csak "crud" lesz!
 
 // 🔥 ÜZENET KÜLDÉS KEZELÉS
 if ($oldal == "kapcsolat_kuld" && $_POST) {
@@ -12,7 +14,6 @@ if ($oldal == "kapcsolat_kuld" && $_POST) {
     $email = trim($_POST["email"]);
     $message = trim($_POST["message"]);
 
-    // 🔴 szerver oldali validáció
     if ($name == "" || $email == "" || $message == "") {
         die("Hiányzó adat!");
     }
@@ -21,11 +22,9 @@ if ($oldal == "kapcsolat_kuld" && $_POST) {
         die("Hibás email!");
     }
 
-    // mentés DB-be
     $stmt = $dbh->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $message]);
 
-    // átirányítás
     header("Location: index.php?uzenetek");
     exit;
 }
@@ -43,7 +42,4 @@ if ($oldal != "") {
 }
 
 include('./templates/index.tpl.php');
-
-
 ?>
-
