@@ -1,12 +1,10 @@
 <?php
 if(isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
     try {
-        // Kapcsolódás
-        global $dbh; // Használd a központi kapcsolatot
+        global $dbh;
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
         
-        // Felhsználó keresése
         $sqlSelect = "select id, csaladi_nev, uto_nev from felhasznalok where bejelentkezes = :bejelentkezes and jelszo = sha1(:jelszo)";
         $sth = $dbh->prepare($sqlSelect);
         $sth->execute(array(':bejelentkezes' => $_POST['felhasznalo'], ':jelszo' => $_POST['jelszo']));
