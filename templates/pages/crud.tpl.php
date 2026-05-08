@@ -1,7 +1,7 @@
 <h1 style="text-align:center; font-family: Arial, sans-serif; font-weight: normal; margin-bottom: 30px;">CRUD OPERATIONS</h1>
 
 <?php
-// HA SZERKESZTÉS VAN FOLYAMATBAN:
+
 if (isset($_GET['edit'])) {
     $stmt_edit = $dbh->prepare("SELECT * FROM felhasznalok WHERE id = ?");
     $stmt_edit->execute([$_GET['edit']]);

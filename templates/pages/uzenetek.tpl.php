@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 🔐 BELÉPÉS ELLENŐRZÉS (a te rendszered szerint)
 if (!isset($_SESSION['login'])) {
     echo "<h2>Hozzáférés megtagadva</h2>";
     echo "<p>Az üzenetek megtekintéséhez be kell jelentkezni!</p>";
@@ -21,7 +20,7 @@ if (!isset($_SESSION['login'])) {
     </tr>
 
 <?php
-// legfrissebb elöl
+
 $stmt = $dbh->query("
     SELECT name, email, message, created_at
     FROM messages
@@ -29,8 +28,6 @@ $stmt = $dbh->query("
 ");
 
 foreach ($stmt as $row) {
-
-    // ha nincs név → Vendég
     $nev = trim($row['name']);
     if ($nev == "") {
         $nev = "Vendég";

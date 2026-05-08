@@ -1,7 +1,6 @@
 <?php
 if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['vezeteknev']) && isset($_POST['utonev'])) {
     try {
-        // Kapcsolódás
         global $dbh; 
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
@@ -13,7 +12,6 @@ if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['veze
             $ujra = "true";
         }
         else {
-            // Ha nem létezik, akkor regisztráljuk
             $sqlInsert = "insert into felhasznalok(id, csaladi_nev, uto_nev, bejelentkezes, jelszo)
                           values(0, :csaladinev, :utonev, :bejelentkezes, :jelszo)";
             $stmt = $dbh->prepare($sqlInsert); 
