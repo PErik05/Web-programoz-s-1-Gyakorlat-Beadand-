@@ -41,9 +41,9 @@ $hiba_oldal = array ('fajl' => '404', 'szoveg' => 'A keresett oldal nem találha
 
 try {
     $dbh = new PDO(
-        'mysql:host=localhost;dbname=gyakorlat7',
-        'root',
-        '',
+        'mysql:host=localhost;dbname=beadando123', 
+        'beadando123',                              
+        'beadando0123',                     
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
     );
 
